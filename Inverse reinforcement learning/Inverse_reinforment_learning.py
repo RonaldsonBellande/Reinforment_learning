@@ -39,7 +39,7 @@ class IRL(object):
 
         self.dt = np.zeros((self.horizon,self.n_states))
 
-        self.r_weight_question_3 = self.maxEntIRL()
+        self.r_weight_2 = self.maxEntIRL()
 
         self.r_weights = self.maxEntIRL()
         self.reward_matrix = []
@@ -117,7 +117,7 @@ class IRL(object):
             self.r_weights = self.r_weights+(self.learning_rate*gradient)
         return self.r_weights
 
-    def maxEntIRL_Question_3(self):
+    def maxEntIRL_2(self):
         self.start_distance[0] = 1
         f = 0
         for d in self.demos:
@@ -129,8 +129,8 @@ class IRL(object):
             self.policy = self.calcMaxEntPolicy()
             print(self.policy)
             svf = self.calcExpectedStateFreq()
-            self.r_weight_question_3 = self.r_weight_question_3+(self.learning_rate)
-        return self.r_weight_question_3
+            self.r_weight_2 = self.r_weight_2+(self.learning_rate)
+        return self.r_weight_2
 ########################
 
 def main():
@@ -139,7 +139,7 @@ def main():
     for Si in range(iRL.number_of_states):
         iRL.reward_matrix.append( np.dot(iRL.r_weights, iRL.state_features[Si]) )
     iRL.reward_matrix = np.reshape(iRL.reward_matrix, (5,5))
-    print(iRL.r_weight_question_3)
+    print(iRL.r_weight_2)
     print("second")
     print(iRL.r_weights)
     ##############
@@ -149,6 +149,7 @@ def main():
     Y = np.arange(0, 5, 1)
     X, Y = np.meshgrid(X, Y)
     surf = ax.plot_surface(X, Y, iRL.reward_matrix, rstride=1, cstride=1, cmap=cm.coolwarm,linewidth=0, antialiased=False)
+    plt.savefig('/home/ronaldsonbellande/Desktop/Reinforment Learning/cmap_IRL.png', dpi =500)
     plt.show()
 
 if __name__ == "__main__":
