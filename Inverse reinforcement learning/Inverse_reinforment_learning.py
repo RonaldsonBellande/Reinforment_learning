@@ -39,7 +39,6 @@ class IRL(object):
 
         self.dt = np.zeros((self.horizon,self.n_states))
 
-        #########Question 3
         self.r_weight_question_3 = self.maxEntIRL()
 
         self.r_weights = self.maxEntIRL()
@@ -118,7 +117,6 @@ class IRL(object):
             self.r_weights = self.r_weights+(self.learning_rate*gradient)
         return self.r_weights
 
-############Question 3
     def maxEntIRL_Question_3(self):
         self.start_distance[0] = 1
         f = 0
@@ -141,10 +139,8 @@ def main():
     for Si in range(iRL.number_of_states):
         iRL.reward_matrix.append( np.dot(iRL.r_weights, iRL.state_features[Si]) )
     iRL.reward_matrix = np.reshape(iRL.reward_matrix, (5,5))
-    ##### question 3
     print(iRL.r_weight_question_3)
     print("second")
-    #### Question 5
     print(iRL.r_weights)
     ##############
     figure = plt.figure()
