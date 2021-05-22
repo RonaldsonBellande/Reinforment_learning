@@ -149,7 +149,7 @@ def main():
     Y = np.arange(0, 5, 1)
     X, Y = np.meshgrid(X, Y)
     surf = ax.plot_surface(X, Y, iRL.reward_matrix, rstride=1, cstride=1, cmap=cm.coolwarm,linewidth=0, antialiased=False)
-    plt.savefig('/home/ronaldsonbellande/Desktop/Reinforment Learning/cmap_IRL.png', dpi =500)
+    plt.savefig('/home/ronaldsonbellande/Desktop/Reinforment Learning/Inverse reinforcement learning/cmap_IRL.png', dpi =500)
     plt.show()
 
 if __name__ == "__main__":
